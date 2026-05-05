@@ -1,10 +1,10 @@
 # Generated from the GnOuGo release workflow.
 cask "gnougo" do
-  version "0.5.0"
+  version "0.5.1-dev.140"
   arch arm: "arm64", intel: "x64"
 
-  sha256 arm:   "29f7cf192540190537f095897c95fbe4fc6745ad06b742ec44d14f2cf89c11ad",
-         intel: "469a8c6647419697bcaf881dc09f9fb21bf0712a32a67589bfbc21299a824404"
+  sha256 arm:   "592a862584cba077084d157f7fbf2bedf307a8ef8cda664f6844a08b4022f37c",
+         intel: "f49cbfb22e0fb837a1dd3aa799d4383b83a35a55f29d9c78212b975c6c8bb4c3"
 
   url "https://github.com/GnouGo/GnouGo/releases/download/v#{version}/gnougo-osx-#{arch}.tar.gz"
   name "gnougo"
