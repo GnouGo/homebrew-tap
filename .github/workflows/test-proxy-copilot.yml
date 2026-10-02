@@ -1,0 +1,43 @@
+name: Test ProxyCopilot formula
+
+on:
+  push:
+    paths:
+      - Formula/gnougo-proxy-copilot.rb
+      - .github/workflows/test-proxy-copilot.yml
+  pull_request:
+    paths:
+      - Formula/gnougo-proxy-copilot.rb
+      - .github/workflows/test-proxy-copilot.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  homebrew:
+    name: Homebrew (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-15, macos-15-intel]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    env:
+      HOMEBREW_NO_AUTO_UPDATE: "1"
+      HOMEBREW_NO_INSTALL_CLEANUP: "1"
+      HOMEBREW_NO_ANALYTICS: "1"
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - name: Load the candidate tap
+        run: |
+          brew tap gnougo/tap "$GITHUB_WORKSPACE"
+          if brew commands --quiet | grep -qx trust; then
+            brew trust --formula gnougo/tap/gnougo-proxy-copilot
+          fi
+      - name: Install ProxyCopilot
+        run: brew install --formula gnougo/tap/gnougo-proxy-copilot
+      - name: Test installed command and dashboard
+        run: brew test gnougo/tap/gnougo-proxy-copilot
