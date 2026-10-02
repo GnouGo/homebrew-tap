@@ -2,17 +2,17 @@
 class GnougoProxyCopilot < Formula
   desc "Standalone local LLM proxy for VS Code Chat and Agent mode"
   homepage "https://github.com/GnouGo/GnouGo/tree/main/src/GnOuGo.ProxyCopilot.Server"
-  version "0.19.3"
+  version "0.20.0"
   license "Apache-2.0"
 
   on_arm do
     url "https://github.com/GnouGo/GnouGo/releases/download/v#{version}/GnOuGo.ProxyCopilot.Server-osx-arm64-aot.tar.gz"
-    sha256 "cdae0475414ef80d8697337d3e0729743151d8c394725a3b1367b37dfde8c27f"
+    sha256 "b2f4459a41bfb662eaa61fe6b1b58b67e4c5847754b9f20c662cb98038b6fe34"
   end
 
   on_intel do
     url "https://github.com/GnouGo/GnouGo/releases/download/v#{version}/GnOuGo.ProxyCopilot.Server-osx-x64-aot.tar.gz"
-    sha256 "489b7f6dee6047f5d8e1a1f6dedf485c4effd60985658ea145dbb837b7435356"
+    sha256 "1749663bc0707471db0f7d2f1b11659eadb78587bc55580677538496f80cc58e"
   end
 
   depends_on :macos
